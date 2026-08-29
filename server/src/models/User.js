@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema(
 
     password: {
       type: String,
-      required: true,
+      required: [true, "Password is required"],
       trim: true,
       validate: {
         validator: (value) => {
@@ -66,6 +66,8 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
   },
+  // when timestamps added,
+  // mongoose auto adds createdAt, updatedAt fields
   { timestamps: true },
 );
 
