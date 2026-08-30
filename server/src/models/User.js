@@ -18,7 +18,8 @@ const userSchema = new mongoose.Schema(
       trim: true,
       validate: {
         validator: (value) => {
-          return validator.matches(value, /^[a-zA-Z0-9_]+$/);
+          return validator.matches(value, /^[a-z0-9_]+$/);
+          // allowing lowercase letters, numbers and underscore(_)
         },
 
         message: "Username can only contain alphabets, numbers and underscores",
@@ -34,7 +35,7 @@ const userSchema = new mongoose.Schema(
       minlength: 2,
       validate: {
         validator: (value) => {
-          return isEmail(value);
+          return validator.isEmail(value);
         },
 
         message: "Please enter a valid email address",
@@ -47,7 +48,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
       validate: {
         validator: (value) => {
-          return isStrongPassword(value);
+          return validator.isStrongPassword(value);
         },
 
         message:
